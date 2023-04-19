@@ -2,13 +2,46 @@
   text-align: left;
 }
 
+.Backdrop {
+  height: 100%;
+  background-color: #708090;
+}
+
 .TopBar {
   height: 75px;
-  background-color: blueviolet;
+  background-color: #6A5ACD;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 55px;
+  width: 100%;
+  justify-content: center; /* add this line */
+}
+
+.container {
+  height: 100vh;
+  overflow: auto;
+}
+
+.Title {
+  text-align: center;
+  margin: 0;
+  flex-grow: 1;
+  line-height: 1px;
+  color: white;
+  font-family: Monaco, monospace;
+  padding: 0 50px !important; /* add some padding to the left and right */
+
 }
 
 #Tutorial-Button {
   font-size: 20px;
+  padding: 10px 20px;
+  margin: 10px;
+  font-family: Monaco, monospace;
+  flex-shrink: 0; /* prevent the button from shrinking */
+
+
 }
 
 

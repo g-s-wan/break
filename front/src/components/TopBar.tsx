@@ -5,6 +5,7 @@ export default function TopBar(){
     return( 
         <div className="TopBar">
             <button type ="button" id = "Tutorial-Button">Tutorial</button>
+            <h1 className="Title">Trainer</h1>
         </div>
 
 )}
