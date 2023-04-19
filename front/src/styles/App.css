@@ -40,10 +40,11 @@
   margin: 10px;
   font-family: Monaco, monospace;
   flex-shrink: 0; /* prevent the button from shrinking */
-
-
 }
 
+li {
+  display: inline;
+}
 
 
 

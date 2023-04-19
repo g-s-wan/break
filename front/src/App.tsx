@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TopBar from "./components/TopBar";
 import Backdrop from "./components/Backdrop";
+import {HashRouter, Route, Routes} from "react-router-dom";
 
 
 /**
@@ -10,12 +11,13 @@ import Backdrop from "./components/Backdrop";
 function App(){
 
   return (
-    <div className="App">
-        <div className="container">
-          <TopBar></TopBar>
-          <Backdrop></Backdrop>
-        </div>
-    </div>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<TopBar />}>
+            <Route index element={<App />} />
+          </Route>
+        </Routes>
+      </HashRouter>
   );
 }
 
