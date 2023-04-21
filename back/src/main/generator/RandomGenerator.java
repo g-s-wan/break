@@ -2,9 +2,7 @@ package generator;
 
 import csv.rowobjects.Move;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class RandomGenerator {
     List<Move> moves;
@@ -12,33 +10,37 @@ public class RandomGenerator {
         this.moves = moves;
     }
 
-    public List<Move> generate(){
+    public List<Move> generate(int length){
         int startIndex = (int)(Math.random()*this.moves.size());
         //int startIndex = 6;
 
+        Map<Integer, Integer> visited = new HashMap<>();
         ArrayList<Integer>[] adjacencyList = new ArrayList[this.moves.size()];
         for(int i = 0; i< this.moves.size(); i++){
             adjacencyList[i] = new ArrayList<>();
         }
 
         for(Move m : this.moves){
+            visited.put(m.getId(), 0);
             for(int link : m.getLinks()){
                 adjacencyList[m.getId()].add(link);
+
             }
         }
 
-        boolean[] visited = new boolean[this.moves.size()];
         List<Move> res = new ArrayList<>();
 
         Stack<Move> stackingStacker = new Stack<Move>();
 
         stackingStacker.push(this.moves.get(startIndex));
         while (!stackingStacker.isEmpty()){
+            if(res.size() > length)
+                break;
             Move current = stackingStacker.pop();
             // keep a direct link to the node via the key
-            if(!visited[current.getId()]) {
+            if(visited.get(current.getId()) < 3) {
                 res.add(current);
-                visited[current.getId()] = true;
+                visited.put(current.getId(), visited.get(current.getId())+1);
             }else{
                 continue;
             }
@@ -51,7 +53,7 @@ public class RandomGenerator {
                 if(moveIndex == -1){
                     break;
                 }
-                if(!visited[moveIndex]){
+                if(visited.get(current.getId()) < 3){
                     stackingStacker.push(this.moves.get(moveIndex));
                     break;
                 }else{
