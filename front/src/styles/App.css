@@ -1,14 +1,23 @@
 .App {
   text-align: left;
+  height: 100%;
+
 }
 
 .Backdrop {
+  /* height: 100%;
+  background-color: red; */
+
+  position: absolute;
   height: 100%;
-  background-color: #708090;
+  width: 100%;
+  background-color: red;
+  z-index: -1;
+  
 }
 
 .TopBar {
-  height: 75px;
+  /* height: 75px;
   background-color: #6A5ACD;
   display: flex;
   justify-content: space-between;
@@ -16,6 +25,19 @@
   height: 55px;
   width: 100%;
   justify-content: center; /* add this line */
+  /* z-index: 1; add this line */ 
+
+  position: relative;
+  height: 75px;
+  background-color: #6A5ACD;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 55px;
+  width: 100%;
+  justify-content: center;
+  z-index: 1;
+
 }
 
 .container {
@@ -23,18 +45,15 @@
   overflow: auto;
 }
 
-.Title {
-  text-align: center;
-  margin: 0;
-  flex-grow: 1;
-  line-height: 1px;
-  color: white;
+#Tutorial-Button {
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 10px;
   font-family: Monaco, monospace;
-  padding: 0 50px !important; /* add some padding to the left and right */
-
+  flex-shrink: 0; /* prevent the button from shrinking */
 }
 
-#Tutorial-Button {
+#Title {
   font-size: 20px;
   padding: 10px 20px;
   margin: 10px;
@@ -46,5 +65,74 @@ li {
   display: inline;
 }
 
+.Dropdowns {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 300px;
+}
 
+.Dropdowns__container {
+  display: flex;
+  flex-direction: row;
+}
+
+.Dropdowns__select {
+  margin-right: 10px;
+  width: 50%;
+}
+
+
+
+.sequence-menu {
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 250px;
+  background-color: purple;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.sequence-menu-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sequence-menu-moves {
+  overflow-y: auto;
+}
+
+.sequence-menu-move {
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sequence-menu-move.highlighted {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sequence-menu-title {
+  margin-top: 0;
+}
+
+.sequence-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sequence-menu-item {
+  cursor: pointer;
+}
+
+.sequence-menu-item.selected {
+  background-color: white;
+}
 

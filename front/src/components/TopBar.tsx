@@ -9,7 +9,7 @@ export default function TopBar(){
           <li id="Tutorial-Button">
             <Link to="/">Tutorials</Link>
           </li>
-          <li>
+          <li id="Title">
             <Link to="/">Trainer</Link>
           </li>
         </nav>
