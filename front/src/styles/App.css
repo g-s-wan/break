@@ -13,4 +13,34 @@
   color: white;
 }
 
+.Landing-Button {
+  padding: 20px;
+  background-color: #484973;
+  color: #FFFFFF;
+  border-radius: 20px;
+  font-size: 2rem;
+  margin: 20px;
+  text-decoration: none;
+  font-family: Monaco, monospace;
+}
+
+.Landing-Buttons {
+  padding-top: 20vh;
+}
+
+.Landing-Page {
+  background-color: #879DB2;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.Landing-Title {
+  font-family: Monaco, monospace;
+  color: #FFFFFF;
+  font-size: 5rem;
+  padding-top: 30vh;
+}
+
 
