@@ -136,3 +136,10 @@ li {
   background-color: white;
 }
 
+.Images {
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translateY(-50%);
+}
+
