@@ -11,8 +11,8 @@ export default function Backdrop(){
     const [currentMoveIndex, setCurrentMoveIndex] = useState(0); // set the initial highlighted move index
 
     const imagePaths = [
-        "front/documents/Two_dancers.jpeg",
-        "front/documents/yabeke.jpeg"
+        "../../../documents/Two_dancers.jpeg",
+        "../../../documents/yabeke.jpeg"
       ];
 
   // Update the current move index every 10 seconds
@@ -31,7 +31,7 @@ export default function Backdrop(){
 
     // Clear the interval when the component unmounts
     return () => clearInterval(intervalId);
-  }, [imagePaths]);
+  }, [currentMoveIndex]);
     
     // render the map component with the overlay data as a source and layer
     return( 
