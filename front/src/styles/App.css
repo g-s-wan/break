@@ -139,7 +139,11 @@ li {
 .Images {
   position: fixed;
   top: 50%;
-  right: 50%;
+  right: 20%;
   transform: translateY(-50%);
-}
+  width: 50%;
+  max-width: 200px; /* Change the value to the desired maximum width */
+  }
+  
+  
 
