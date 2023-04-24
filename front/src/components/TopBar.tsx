@@ -6,10 +6,10 @@ export default function TopBar(){
     return(
         <div className="TopBar">
           <li id="Tutorial-Button">
-            <Link to="/">Tutorials</Link>
+            <Link to="/tutorials">Tutorials</Link>
           </li>
           <li id="Title">
-            <Link to="/">Trainer</Link>
+            <Link to="/trainer">Trainer</Link>
           </li>
         </div>
 )}

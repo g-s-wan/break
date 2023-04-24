@@ -136,7 +136,7 @@ li {
   background-color: white;
 }
 
-.Landing-Button {
+.Tutorials-Button, .Trainer-Button {
   padding: 20px;
   background-color: #484973;
   color: #FFFFFF;

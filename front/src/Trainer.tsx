@@ -7,10 +7,10 @@ import {HashRouter, Route, Routes} from "react-router-dom";
 
 function Trainer() {
     return (
-      <HashRouter>
-        <TopBar />
-        <Backdrop />
-      </HashRouter>
+        <div>
+          <TopBar />
+          <Backdrop />
+        </div>
     );
   }
   

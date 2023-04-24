@@ -23,9 +23,9 @@ import Tutorial from "./Tutorials";
 
 function App() {
   return (
-    // <Landing></Landing>
+    <Landing></Landing>
     // <Trainer></Trainer>
-    <Tutorial></Tutorial>
+    // <Tutorial></Tutorial>
   );
 }
 
