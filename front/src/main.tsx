@@ -9,13 +9,19 @@ import Mock from "./Mock";
  * This is the main class which uses react to set up the App.
  */
 
+// ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+//   <React.StrictMode>
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path="/" element={ <App /> }></Route>
+//         <Route path="/mock" element={ <Mock /> }></Route>
+//       </Routes>
+//     </BrowserRouter>
+//   </React.StrictMode>,
+// )
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={ <App /> }></Route>
-        <Route path="/mock" element={ <Mock /> }></Route>
-      </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>,
 )
