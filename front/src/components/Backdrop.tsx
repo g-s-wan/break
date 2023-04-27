@@ -1,44 +1,60 @@
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import Dropdowns from "./Dropdowns";
-import SequenceMenu from "./SequenceMenu";
 import React, { useState, useEffect } from "react";
+import SequenceMenu from "./SequenceMenu";
 import Images from "./Images";
 
+type Props = {};
 
-export default function Backdrop(){
-    const moves = ["Move 1", "Move 2"];
-    //const currentMoveIndex = 2; // set the initial highlighted move index
-    const [currentMoveIndex, setCurrentMoveIndex] = useState(0); // set the initial highlighted move index
+export default function Backdrop(props: Props) {
+  const moves = ["Move 1", "Move 2"];
+  const imagePaths = [
+    "../../../documents/Two_dancers.jpeg",
+    "../../../documents/yabeke.jpeg"
+  ];
 
-    const imagePaths = [
-        "../../../documents/Two_dancers.jpeg",
-        "../../../documents/yabeke.jpeg"
-      ];
+  const [currentMoveIndex, setCurrentMoveIndex] = useState(0);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
-  // Update the current move index every 10 seconds
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setCurrentMoveIndex((prevIndex) => {
-                if (prevIndex < 0) {
-                    return imagePaths.length - 1;
-                } else if (prevIndex >= imagePaths.length) {
-                    return 0;
-                } else {
-                    return prevIndex + 1;
-                }
-            });
-    }, 10000); // 10 seconds in milliseconds
+  useEffect(() => {
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
 
-    // Clear the interval when the component unmounts
-    return () => clearInterval(intervalId);
-  }, [currentMoveIndex]);
-    
-    // render the map component with the overlay data as a source and layer
-    return( 
-        <nav className="Backdrop">
-            <Dropdowns />
-            <SequenceMenu moves={moves} currentMoveIndex={currentMoveIndex} />
-            <Images filePath={imagePaths[currentMoveIndex]} altText="Image" />
-        </nav>
+    const id = setInterval(() => {
+      setCurrentMoveIndex((prevIndex) => {
+        if (prevIndex >= imagePaths.length - 1) {
+          clearInterval(intervalId!);
+          return prevIndex;
+        }
+        return prevIndex + 1;
+      });
+    }, 10000);
 
-)}
+    setIntervalId(id);
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [currentMoveIndex, intervalId, imagePaths.length]);
+
+  const stopLoop = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+  };
+
+  return (
+    <nav className="Backdrop">
+      <SequenceMenu
+        moves={moves}
+        currentMoveIndex={currentMoveIndex}
+        stopLoop={stopLoop}
+      />
+      <Images
+        filePath={currentMoveIndex < imagePaths.length ? imagePaths[currentMoveIndex] : ""}
+        altText="Image"
+      />
+    </nav>
+  );
+}

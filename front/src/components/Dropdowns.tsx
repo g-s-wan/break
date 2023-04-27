@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import Select from 'react-select';
+import Select from 'react-select';
 
 // export default function Dropdowns(){
 
@@ -56,21 +56,21 @@ export default function Dropdowns() {
         <div className="Dropdowns__container">
           <div className="Dropdowns__select">
             <label htmlFor="difficulty-select">Difficulty:</label>
-            {/* <Select
+            <Select
               id="difficulty-select"
               options={difficultyOptions}
               value={difficultyValue}
               onChange={value => setDifficultyValue(value)}
-            /> */}
+            />
           </div>
           <div className="Dropdowns__select">
             <label htmlFor="filter-select">Filter:</label>
-            {/* <Select
+            <Select
               id="filter-select"
               options={filterOptions}
               value={filterValue}
               onChange={value => setFilterValue(value)}
-            /> */}
+            />
           </div>
         </div>
       </div>
