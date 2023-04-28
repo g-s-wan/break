@@ -51,11 +51,12 @@ public class GenerateHandler implements Route {
       jsonMap.put("result", "success");
       jsonMap.put("data", moveSequence);
 
-      return new GenerateResponse(jsonMap);
     } catch (Exception e) {
       jsonMap.put("result", "error");
-      return new GenerateResponse(jsonMap);
+      jsonMap.put("message", "oops");
     }
+
+      return new GenerateResponse(jsonMap).serialize();
   }
 
   /**
@@ -71,7 +72,7 @@ public class GenerateHandler implements Route {
       try {
         Moshi moshi = new Moshi.Builder().build();
         JsonAdapter<Map<String, Object>> jsonAdapter = moshi.adapter(
-            Types.newParameterizedType(Map.class, String.class, List.class, Move.class));
+            Types.newParameterizedType(Map.class, String.class, Object.class));
         return jsonAdapter.indent("  ").toJson(jsonMap);
       } catch (Exception e) {
         e.printStackTrace();

@@ -42,7 +42,7 @@ public class MoveHandler implements Route {
       jsonMap.put("message", "An error occurred while retrieving the move list");
     }
 
-    return new MoveResponse(jsonMap);
+    return new MoveResponse(jsonMap).serialize();
   }
 
   /**
@@ -58,7 +58,7 @@ public class MoveHandler implements Route {
       try {
         Moshi moshi = new Moshi.Builder().build();
         JsonAdapter<Map<String, Object>> jsonAdapter = moshi.adapter(
-            Types.newParameterizedType(Map.class, String.class, List.class, Move.class));
+            Types.newParameterizedType(Map.class, String.class, Object.class));
         return jsonAdapter.indent("  ").toJson(jsonMap);
       } catch (Exception e) {
         e.printStackTrace();
