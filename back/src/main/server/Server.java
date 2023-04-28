@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import spark.Spark;
 
+import src.main.csv.rowcreators.MoveCreator;
 import src.main.server.GenerateHandler;
 
 /** the Main class of our project. this is where execution begins. */
@@ -47,9 +48,10 @@ public final class Server {
     // Setting up the handler for the map endpoint
     try {
       csv.Parser<csv.rowobjects.Move> parser = new csv.Parser<>(
-          new FileReader("back/data/Sample_Data.csv"), new csv.rowcreators.MoveCreator(), true);
+          new FileReader("back/data/Sample_Data.csv"), new MoveCreator(), true);
       RandomGenerator generator = new RandomGenerator(parser.parseLines());
       Spark.get("generate", new GenerateHandler(generator));
+      Spark.get("moves", new MoveHandler());
       Spark.init();
       Spark.awaitInitialization();
       System.out.println("Server started at http://localhost:3230");
