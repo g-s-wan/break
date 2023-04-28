@@ -9,10 +9,10 @@ function Landing() {
           ✨Breaking✨
         </div>
         <div className="Landing-Buttons">
-          <Link to="mock" className="Landing-Button">
+          <Link to="tutorials" className="Tutorials-Button">
             Tutorials
           </Link>
-          <Link to="mock" className="Landing-Button">
+          <Link to="trainer" className="Trainer-Button">
             Trainer
           </Link>
         </div>
