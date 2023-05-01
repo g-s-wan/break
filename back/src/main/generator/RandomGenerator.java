@@ -86,11 +86,12 @@ public class RandomGenerator {
                 if(moveIndex == -1){
                     break;
                 }
-                if(visited.get(current.getId()) < 3){
+                if(visited.get(moveIndex) < 3){
                     stackingStacker.push(this.moves.get(moveIndex));
                     break;
                 }else{
                     adjacencyList[current.getId()].remove(moveIndex);
+                    stackingStacker.push(current);
                 }
             }
         }
