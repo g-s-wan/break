@@ -50,4 +50,8 @@ public class Move {
     public int[] getLinks(){
         return this.links;
     }
+
+    public String getType() {
+        return type;
+    }
 }
