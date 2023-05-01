@@ -51,7 +51,6 @@ public final class Server {
           new FileReader("back/data/Sample_Data.csv"), new MoveCreator(), true);
       RandomGenerator generator = new RandomGenerator(parser.parseLines());
       Spark.get("generate", new GenerateHandler(generator));
-      Spark.get("moves", new MoveHandler());
       Spark.init();
       Spark.awaitInitialization();
       System.out.println("Server started at http://localhost:3230");

@@ -1,30 +1,20 @@
 import Images from "./components/Images";
 import TopBar from "./components/TopBar";
 import {HashRouter, Route, Routes} from "react-router-dom";
-import TutorialSection from "./components/TutorialSection";
-import {useEffect, useState} from "react";
+import Tutorials from "./components/TutorialSection";
 
-function Tutorials(){
-  const [moveList, setMoveList] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:3230/moves")
-    .then(response => response.json())
-    .then(responseObject => {
-      setMoveList(responseObject.data);
-    });
-  }, []);
 
+export default function Tutorial(){
   return(
-        <div>
-            <TopBar />
-            <div className = "Backdrop">
-              {moveList.map((item, index) => (
-                  <TutorialSection image='../../../documents/Two_dancers.jpeg' moveName={item.name} mainText={item.description} altText='placeholder' />
-              ))}
-            </div>
+      <div>
+        <TopBar />
+        <div className = "Backdrop" role="main">
+          <Tutorials image= "../../../documents/Two_dancers.jpeg" moveName="placeholder" mainText="text text text" altText="placeholder"></Tutorials>
+          <Tutorials image= "../../../documents/Two_dancers.jpeg" moveName="placeholder" mainText="text text text" altText="placeholder"></Tutorials>
+          <Tutorials image= "../../../documents/Two_dancers.jpeg" moveName="placeholder" mainText="text text text" altText="placeholder"></Tutorials>
         </div>
-    )
-}
+      </div>
+  )
 
-export default Tutorials;
+}

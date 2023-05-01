@@ -1,8 +1,8 @@
-ID,Name,Type,Difficulty,links,Description
-0,Indian Step,Toprock,1,1,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-1,Hip Twist,Toprock,1,0,when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries but also the leap into electronic typesetting remaining essentially unchanged.
-2,6-Step,Footwork,1,2 3 4 5,It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-3,3-Step,Footwork,1,2 3 4 5,Contrary to popular belief Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC making it over 2000 years old.
-4,CC,Footwork,1,2 3 4 5 6,Richard McClintock a Latin professor at Hampden-Sydney College in Virginia looked up one of the more obscure Latin words consectetur from a Lorem Ipsum passage and going through the cites of the word in classical literature discovered the undoubtable source.
-5,Baby Freeze,Freeze,1,-1,Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics very popular during the Renaissance. The first line of Lorem Ipsum "Lorem ipsum dolor sit amet.." comes from a line in section 1.10.32.
-6,Swipe,Power,2,5,The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form accompanied by English versions from the 1914 translation by H. Rackham.
+ID,Name,Type,Difficulty,links
+0,Indian Step,Toprock,1,1
+1,Hip Twist,Toprock,1,0
+2,6-Step,Footwork,1,2 3 4 5
+3,3-Step,Footwork,1,2 3 4 5
+4,CC,Footwork,1,2 3 4 5 6
+5,Baby Freeze,Freeze,1,-1
+6,Swipe,Power,2,5
