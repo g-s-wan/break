@@ -1,4 +1,4 @@
-package src.main.csv.rowcreators;
+package csv.rowcreators;
 
 import csv.FactoryFailureException;
 import csv.rowobjects.Move;
@@ -14,7 +14,7 @@ import java.util.List;
  * @author Pauline Nguyen
  * @version February 3, 2023
  */
-public class MoveCreator implements csv.rowcreators.CreatorFromRow<Move> {
+public class MoveCreator implements CreatorFromRow<Move> {
 
   /** This is the constructor for the StarCreator class. It does not store any information. */
   public MoveCreator() {}
@@ -36,8 +36,8 @@ public class MoveCreator implements csv.rowcreators.CreatorFromRow<Move> {
         row.get(1),
         (row.get(2)),
         Integer.parseInt(row.get(3)),
-        (row.get(4)),
-        (row.get(5)));
+        (row.get(4))
+    );
   }
 
   /**

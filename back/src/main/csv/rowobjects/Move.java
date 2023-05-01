@@ -10,15 +10,12 @@ public class Move {
     private int difficulty;
     private int[] links;
 
-    private String description;
-
-    public Move(int id, String name, String type, int difficulty, String links, String description) {
+    public Move(int id, String name, String type, int difficulty, String links) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.difficulty = difficulty;
         this.links = stringToIntArray(links);
-        this.description = description;
     }
 
     private int[] stringToIntArray(String s){
@@ -43,7 +40,6 @@ public class Move {
                 ", type='" + type + '\'' +
                 ", difficulty=" + difficulty +
                 ", links=" + Arrays.toString(links) +
-                ", description=" + description +
                 '}';
     }
 

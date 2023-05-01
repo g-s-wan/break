@@ -1,13 +1,13 @@
-package src.main.generator;
+package generator;
 
 import csv.FactoryFailureException;
 import csv.Parser;
+import csv.rowcreators.MoveCreator;
 import csv.rowobjects.Move;
 
 import java.io.FileReader;
 import java.io.IOException;
 import generator.RandomGenerator;
-import src.main.csv.rowcreators.MoveCreator;
 
 public class Main {
     public static void main (String[] args)throws IOException, FactoryFailureException {

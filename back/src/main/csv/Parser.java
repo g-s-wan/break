@@ -55,7 +55,7 @@ public class Parser<T> {
    * @throws IOException thrown when BufferedReader fails to read from CSV
    * @throws FactoryFailureException thrown when CreatorFromRow fails to create object out of row
    */
-  public List<T> parseLines() throws IOException, csv.FactoryFailureException {
+  public List<T> parseLines() throws IOException, FactoryFailureException {
     if (this.hasHeader) {
       String firstLine = this.buffReader.readLine();
       if (firstLine == null) {
