@@ -8,7 +8,7 @@ type Props = {
     altText: string;
   };
 
-export default function Tutorials({image, moveName, mainText, altText} : Props){
+export default function TutorialSection({image, moveName, mainText, altText} : Props){
     return(
         <div id = "tutorial-section">
             <div id = "image-section"> 

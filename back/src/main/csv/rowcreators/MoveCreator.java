@@ -36,7 +36,8 @@ public class MoveCreator implements CreatorFromRow<Move> {
         row.get(1),
         (row.get(2)),
         Integer.parseInt(row.get(3)),
-        (row.get(4)));
+        (row.get(4))
+    );
   }
 
   /**

@@ -5,14 +5,14 @@ import {Link} from "react-router-dom";
 function Landing() {
   return (
       <div className="Landing-Page">
-        <div className="Landing-Title">
+        <div className="Landing-Title" role="heading">
           ✨Breaking✨
         </div>
         <div className="Landing-Buttons">
-          <Link to="tutorials" className="Tutorials-Button">
+          <Link to="tutorials" className="Tutorials-Button" role="button">
             Tutorials
           </Link>
-          <Link to="trainer" className="Trainer-Button">
+          <Link to="trainer" className="Trainer-Button" role="button">
             Trainer
           </Link>
         </div>

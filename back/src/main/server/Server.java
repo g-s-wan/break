@@ -1,8 +1,15 @@
-package server;
+package src.main.server;
 
 import static spark.Spark.after;
 
+import generator.RandomGenerator;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import spark.Spark;
+
+import src.main.csv.rowcreators.MoveCreator;
+import src.main.server.GenerateHandler;
 
 /** the Main class of our project. this is where execution begins. */
 public final class Server {
@@ -11,7 +18,7 @@ public final class Server {
    * the initial method called when execution begins.
    * @param args an array of command line arguments
    */
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
 
     Spark.port(3230);
     /*
@@ -38,8 +45,17 @@ public final class Server {
           response.header("Access-Control-Allow-Methods", "*");
         });
 
-    Spark.init();
-    Spark.awaitInitialization();
-    System.out.println("Server started at http://localhost:3230");
+    // Setting up the handler for the map endpoint
+    try {
+      csv.Parser<csv.rowobjects.Move> parser = new csv.Parser<>(
+          new FileReader("back/data/Sample_Data.csv"), new MoveCreator(), true);
+      RandomGenerator generator = new RandomGenerator(parser.parseLines());
+      Spark.get("generate", new GenerateHandler(generator));
+      Spark.init();
+      Spark.awaitInitialization();
+      System.out.println("Server started at http://localhost:3230");
+    } catch (Exception e) {
+      System.out.println(e);
+    }
   }
 }
