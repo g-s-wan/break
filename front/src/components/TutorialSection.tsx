@@ -12,8 +12,8 @@ export default function TutorialSection({video, moveName, mainText, altText} : P
     return(
         <div id = "tutorial-section">
             <div id = "image-section"> 
-                <video className = "tutorial-images" >
-                    <source src = {video} type="video/mp4"> </source>
+                <video className = "tutorial-images" controls >
+                    <source src = {video} type="video/mp4"/> 
                 </video>
             </div>
             <div id = "text-section">
