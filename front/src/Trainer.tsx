@@ -3,6 +3,7 @@ import TopBar from "./components/TopBar";
 import Backdrop from "./components/Backdrop";
 import SequenceMenu from "./components/SequenceMenu";
 import {HashRouter, Route, Routes} from "react-router-dom";
+import Dropdowns from "./components/Dropdowns";
 
 
 function Trainer() {
