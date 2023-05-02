@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 
 interface ImagesProps {
-    filePath: string;
-    altText: string;
-  }
+  filePath: string;
+  altText: string;
+  currentMoveName: string;
+}
 
-export default function Images({filePath, altText}: ImagesProps) {
+export default function Images({ filePath, altText, currentMoveName }: ImagesProps) {
   return (
-    <div className="Images">
-      <img src={filePath} alt={altText} />
+    <div className="ImagesContainer">
+      <div className="Images">
+        <img src={filePath} alt={altText} />
+      </div>
+      <div className="CurrentMove">{`Current Move: ${currentMoveName}`}</div>
     </div>
   );
 }

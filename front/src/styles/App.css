@@ -90,7 +90,7 @@ li {
   left: 50px;
   transform: translateY(-50%);
   width: 200px;
-  height: 250px;
+  height: 350px;
   background-color: #6A5ACD;
   color: white;
   border-radius: 10px;
@@ -167,25 +167,35 @@ li {
 }
 
 .Images {
-  position: fixed;
+  position: absolute;
   top: 50%;
-  right: 20%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  max-width: 50%; /* Change the value to adjust the maximum width */
+}
+
+.Images img {
+  max-width: 100%;
+  height: auto;
+}
+
+#image-section {
   width: 50%;
-  max-width: 200px; /* Change the value to the desired maximum width */
-  }
+  background-color: #e1f3f8;
+  border-style: solid;
+  /* Add the following line: */
+  max-width: 100%;
+  /* Remove the following line: */
+  display: flex;
+  justify-content: center;
+}
 
 
 #tutorial-section{
   display: flex;
   width: 100%;
   height: 40%;
-}
-
-#image-section{
-  width: 50%;
-  background-color: #e1f3f8;
-  border-style: solid;
 }
 
 #text-section{
@@ -201,4 +211,22 @@ li {
   left: 25%;
   top: 5%;
   position: relative;
+}
+
+.ImagesContainer {
+  display: flex;
+  align-items: center;
+}
+
+
+.CurrentMove {
+  font-size: 50px;
+  margin-left: 1150px;
+  margin-top: 200px;
+  font-weight: bold;
+  color: #6A5ACD;
+  word-wrap: break-word;
+  text-align: center;
+  max-width: 225px;
+
 }

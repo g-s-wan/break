@@ -17,28 +17,14 @@ export default function Backdrop(props: Props) {
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    if (intervalId) {
-      clearInterval(intervalId);
-    }
-
     const id = setInterval(() => {
-      setCurrentMoveIndex((prevIndex) => {
-        if (prevIndex >= imagePaths.length - 1) {
-          clearInterval(intervalId!);
-          return prevIndex;
-        }
-        return prevIndex + 1;
-      });
+      setCurrentMoveIndex((prevIndex) =>
+        prevIndex >= moves.length - 1 ? 0 : prevIndex + 1
+      );
     }, 10000);
-
-    setIntervalId(id);
-
-    return () => {
-      if (intervalId) {
-        clearInterval(intervalId);
-      }
-    };
-  }, [currentMoveIndex, intervalId, imagePaths]);
+  
+    return () => clearInterval(id);
+  }, [moves]);
 
   const stopLoop = () => {
     if (intervalId) {
@@ -48,24 +34,23 @@ export default function Backdrop(props: Props) {
 
   async function fetchData() {
     try {
-      const response = await fetch("http://localhost:3230/generate?length=5");
+      const response = await fetch("http://localhost:3230/generate?length=8");
       const data = await response.json();
-      let moves: Array<string> = [];
-      let paths: Array<string> = [];
-
-      const moveData: Array<Move> = data.data.map((move: Move) => {
+      const moves: Array<string> = [];
+      const paths: Array<string> = [];
+  
+      data.data.forEach((move: Move) => {
         const moveName = move.name;
-        moves.push(moveName);
-        const movePaths = movesData();
-        if (moveName == undefined) {
-          console.log("move name is undefined?")
-        } else {
-          paths.push(movePaths.get(moveName) as string);
+        const movePath = movesData().get(moveName);
+        if (movePath) {
+          moves.push(moveName);
+          paths.push(movePath);
         }
       });
-
+  
       setMoves(moves);
       setImagePaths(paths);
+      setCurrentMoveIndex(0); // reset current move index
     } catch (error) {
       console.error("Failed to fetch move data", error);
     }
@@ -77,7 +62,7 @@ export default function Backdrop(props: Props) {
 
   return (
     <div>
-      <button onClick={fetchData}>Generate</button>
+      <button onClick={fetchData}>Generate New</button>
       <nav className="Backdrop">
         <SequenceMenu
           moves={moves}
@@ -87,6 +72,7 @@ export default function Backdrop(props: Props) {
         <Images
           filePath={currentMoveIndex < imagePaths.length ? imagePaths[currentMoveIndex] : ""}
           altText="Image"
+          currentMoveName={moves[currentMoveIndex]}
         />
       </nav>
     </div>
