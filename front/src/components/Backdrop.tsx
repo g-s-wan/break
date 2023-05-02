@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SequenceMenu from "./SequenceMenu";
 import Images from "./Images";
-import movesData from "./movephotos.json";
+import movesData from "./movephotos";
 
 type Move = {
   name: string;
@@ -46,31 +46,38 @@ export default function Backdrop(props: Props) {
     }
   };
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch("http://localhost:3230/generate?length=5");
-        const data = await response.json();
-        const moveData: Array<Move> = data.data.map((move: Move) => ({
-          name: move.name,
-          imagePath: movesData[move.name],
-        }));
-        const moves: Array<string> = moveData.map((move: Move) => move.name);
-        const paths: Array<string> = moveData.map((move: Move) => move.imagePath);
+  async function fetchData() {
+    try {
+      const response = await fetch("http://localhost:3230/generate?length=5");
+      const data = await response.json();
+      let moves: Array<string> = [];
+      let paths: Array<string> = [];
 
-        setMoves(moves);
-        setImagePaths(paths);
-      } catch (error) {
-        console.error("Failed to fetch move data", error);
-      }
+      const moveData: Array<Move> = data.data.map((move: Move) => {
+        const moveName = move.name;
+        moves.push(moveName);
+        const movePaths = movesData();
+        if (moveName == undefined) {
+          console.log("move name is undefined?")
+        } else {
+          paths.push(movePaths.get(moveName) as string);
+        }
+      });
+
+      setMoves(moves);
+      setImagePaths(paths);
+    } catch (error) {
+      console.error("Failed to fetch move data", error);
     }
+  }
 
+  useEffect(() => {
     fetchData();
   }, []);
 
   return (
     <div>
-      <button onClick={updateSequence}>Generate</button>
+      <button onClick={fetchData}>Generate</button>
       <nav className="Backdrop">
         <SequenceMenu
           moves={moves}
