@@ -15,6 +15,7 @@ export default function Backdrop(props: Props) {
   const [imagePaths, setImagePaths] = useState<Array<string>>([]);
   const [currentMoveIndex, setCurrentMoveIndex] = useState(0);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+  const [selectedLength, setSelectedLength] = useState(8);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -34,7 +35,7 @@ export default function Backdrop(props: Props) {
 
   async function fetchData() {
     try {
-      const response = await fetch("http://localhost:3230/generate?length=8");
+      const response = await fetch(`http://localhost:3230/generate?length=${selectedLength}`);
       const data = await response.json();
       const moves: Array<string> = [];
       const paths: Array<string> = [];
@@ -60,9 +61,29 @@ export default function Backdrop(props: Props) {
     fetchData();
   }, []);
 
+  const handleLengthChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedLength(parseInt(event.target.value));
+  };
+
+  const handleGenerateNewClick = () => {
+    fetchData();
+  };
+
   return (
     <div>
-      <button onClick={fetchData}>Generate New</button>
+      <label htmlFor="length-select">Select length:</label>
+      <select id="length-select" value={selectedLength} onChange={handleLengthChange}>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
+      <button onClick={handleGenerateNewClick}>Generate New</button>
       <nav className="Backdrop">
         <SequenceMenu
           moves={moves}
