@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
 import SequenceMenu from "./SequenceMenu";
 import Images from "./Images";
-import GenerateButton from "./GenerateButton";
+import movesData from "./movephotos.json";
+
+type Move = {
+  name: string;
+  imagePath: string;
+};
 
 type Props = {};
 
 export default function Backdrop(props: Props) {
-  const [moves, setMoves] = useState(["Move 1", "Move 2"]);
-  // let moves = ["Move 1", "Move 2"];
-  let imagePaths = [
-    "../../../documents/Two_dancers.jpeg",
-    "../../../documents/yabeke.jpeg"
-  ];
-  let moveData;
-
+  const [moves, setMoves] = useState<Array<string>>([]);
+  const [imagePaths, setImagePaths] = useState<Array<string>>([]);
   const [currentMoveIndex, setCurrentMoveIndex] = useState(0);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
@@ -39,8 +38,7 @@ export default function Backdrop(props: Props) {
         clearInterval(intervalId);
       }
     };
-  }, [currentMoveIndex, intervalId, imagePaths.length]);
-
+  }, [currentMoveIndex, intervalId, imagePaths]);
 
   const stopLoop = () => {
     if (intervalId) {
@@ -48,51 +46,42 @@ export default function Backdrop(props: Props) {
     }
   };
 
-  async function getMoveData(): Promise<Array<object>> {
-    // Hardcoded length of 5 atm
-    await fetch("http://localhost:3230/generate?length=5")
-    .then(response => response.json())
-    .then(responseObject => {
-      moveData = responseObject.data;
-      return moveData;
-    })
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("http://localhost:3230/generate?length=5");
+        const data = await response.json();
+        const moveData: Array<Move> = data.data.map((move: Move) => ({
+          name: move.name,
+          imagePath: movesData[move.name],
+        }));
+        const moves: Array<string> = moveData.map((move: Move) => move.name);
+        const paths: Array<string> = moveData.map((move: Move) => move.imagePath);
 
-    return [];
-  }
-
-  async function updateSequence() {
-    let moveData;
-
-    await fetch("http://localhost:3230/generate?length=5")
-    .then(response => response.json())
-    .then(responseObject => {
-      moveData = responseObject.data;
-    })
-
-    let moves = [];
-    if (moveData) {
-      moveData.forEach(move => {
-        moves.push(move.name)
-      })
-
-      setMoves(moves);
+        setMoves(moves);
+        setImagePaths(paths);
+      } catch (error) {
+        console.error("Failed to fetch move data", error);
+      }
     }
-  }
+
+    fetchData();
+  }, []);
 
   return (
-      <div>
-        <button onClick={updateSequence}>Generate</button>
-        <nav className="Backdrop">
-          <SequenceMenu
-              moves={moves}
-              currentMoveIndex={currentMoveIndex}
-              stopLoop={stopLoop}
-          />
-          <Images
-              filePath={currentMoveIndex < imagePaths.length ? imagePaths[currentMoveIndex] : ""}
-              altText="Image"
-          />
-        </nav>
-      </div>
+    <div>
+      <button onClick={updateSequence}>Generate</button>
+      <nav className="Backdrop">
+        <SequenceMenu
+          moves={moves}
+          currentMoveIndex={currentMoveIndex}
+          stopLoop={stopLoop}
+        />
+        <Images
+          filePath={currentMoveIndex < imagePaths.length ? imagePaths[currentMoveIndex] : ""}
+          altText="Image"
+        />
+      </nav>
+    </div>
   );
 }
