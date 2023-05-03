@@ -11,9 +11,9 @@ type Props = {
 export default function TutorialSection({video, moveName, mainText, altText} : Props){
     return(
         <div id = "tutorial-section">
-            <div id = "image-section"> 
+            <div id = "image-section" key={moveName}>
                 <video className = "tutorial-images" controls >
-                    <source src = {video} type="video/mp4"/> 
+                    <source key={moveName} src = {video} type="video/mp4"/>
                 </video>
             </div>
             <div id = "text-section">

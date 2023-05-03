@@ -14,7 +14,7 @@ import jest from "jest-mock";
  * class. To run these tests, cd into the frontend and enter "npm test" into the terminal.
  */
 
-let mockResponse = getMockJson();
+let mockResponse = getMockJson(8);
 
 global.fetch = jest.fn(() =>
     Promise.resolve({
@@ -59,7 +59,7 @@ test("tutorial page renders", async () => {
  */
 test("trainer page renders", async () => {
   render(<Trainer />, {wrapper: BrowserRouter});
-  expect(fetch).toHaveBeenCalled();
+  expect(fetch).toHaveBeenCalledWith("http://localhost:3230/generate?length=8")
 
   const navbar = screen.getAllByRole("navigation")[0];
   expect(navbar).toBeInTheDocument();
