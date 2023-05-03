@@ -13,7 +13,7 @@
   width: 100%;
   background-color: red;
   z-index: -1;
-  
+  overflow-y: auto;  
 }
 
 .TopBar {
@@ -198,7 +198,9 @@ li {
 
 .tutorial-images{
   height: 90%;
-  left: 25%;
+  left: 15%;
   top: 5%;
   position: relative;
 }
+
+
