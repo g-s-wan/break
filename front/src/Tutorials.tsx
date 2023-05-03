@@ -1,7 +1,7 @@
 import TopBar from "./components/TopBar";
 import { useState } from 'react';
 import TutorialSection from "./components/TutorialSection";
-import { MovesList } from "../src/jsons/tutorial";
+import { MovesList } from "../src/jsons/tutorial"
 import Select from 'react-select';
 
 
