@@ -5,12 +5,14 @@ type Props = {
   moves: string[];
   currentMoveIndex: number;
   stopLoop: () => void; // New prop to stop the loop
+  fetchData: () => void;
 };
 
 export default function SequenceMenu({
   moves,
   currentMoveIndex,
   stopLoop,
+    fetchData
 }: Props) {
   const [selectedMoveIndex, setSelectedMoveIndex] = useState(currentMoveIndex);
 
@@ -23,20 +25,23 @@ export default function SequenceMenu({
   }, [currentMoveIndex, moves, stopLoop]);
 
   return (
-    <div className="sequence-menu">
-      <h2 className="sequence-menu-header">Current Sequence</h2>
-      <div className="sequence-menu-moves">
-        {moves.map((move, index) => (
-          <div
-            key={index}
-            className={`sequence-menu-move ${
-              index === currentMoveIndex ? "highlighted" : ""
-            }`}
-          >
-            {move}
+      <div role="list">
+        <div className="sequence-menu">
+          <h2 className="sequence-menu-header">Current Sequence</h2>
+          <div className="sequence-menu-moves">
+            {moves.map((move, index) => (
+                <div
+                    role="listitem"
+                    key={index}
+                    className={`sequence-menu-move ${
+                        index === currentMoveIndex ? "highlighted" : ""
+                    }`}
+                >
+                  {move}
+                </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-    </div>
   );
 }

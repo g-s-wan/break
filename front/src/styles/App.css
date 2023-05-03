@@ -11,9 +11,9 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: red;
+  background-color: #B0C4DE;
   z-index: -1;
-  overflow-y: auto;  
+  
 }
 
 .TopBar {
@@ -82,16 +82,27 @@ li {
   width: 50%;
 }
 
-
+#generate-button {
+  all: unset;
+  padding: 20px;
+  background-color: #484973;
+  color: #FFFFFF;
+  border-radius: 20px;
+  font-size: 1rem;
+  margin: 20px;
+  text-decoration: none;
+  font-family: Monaco, monospace;
+  cursor: pointer;
+}
 
 .sequence-menu {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50px;
   transform: translateY(-50%);
   width: 200px;
-  height: 250px;
-  background-color: purple;
+  height: 450px;
+  background-color: #6A5ACD;
   color: white;
   border-radius: 10px;
   padding: 10px;
@@ -167,25 +178,42 @@ li {
 }
 
 .Images {
-  position: fixed;
-  top: 50%;
-  right: 20%;
-  transform: translateY(-50%);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  max-width: 50%; /* Change the value to adjust the maximum width */
+}
+
+.Images img {
+  max-width: 100%;
+  height: auto;
+}
+
+#image-section {
   width: 50%;
-  max-width: 200px; /* Change the value to the desired maximum width */
-  }
+  background-color: #e1f3f8;
+  border-style: solid;
+  /* Add the following line: */
+  max-width: 100%;
+  /* Remove the following line: */
+  display: flex;
+  justify-content: center;
+}
+
+.sequence-dropdown-and-button {
+  position: fixed;
+  bottom: 0;
+  margin-left: 35vw;
+  margin-bottom: 10vh;
+}
 
 
 #tutorial-section{
   display: flex;
   width: 100%;
   height: 40%;
-}
-
-#image-section{
-  width: 50%;
-  background-color: #e1f3f8;
-  border-style: solid;
 }
 
 #text-section{
@@ -198,9 +226,24 @@ li {
 
 .tutorial-images{
   height: 90%;
-  left: 15%;
+  left: 25%;
   top: 5%;
   position: relative;
 }
 
+.ImagesContainer {
+  display: flex;
+  align-items: center;
+}
 
+
+.CurrentMove {
+  font-size: 50px;
+  margin-left: 1050px;
+  margin-top: 150px;
+  font-weight: bold;
+  color: #6A5ACD;
+  word-wrap: break-word;
+  text-align: center;
+  max-width: 250px;
+}

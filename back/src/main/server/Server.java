@@ -48,7 +48,7 @@ public final class Server {
     // Setting up the handler for the map endpoint
     try {
       csv.Parser<csv.rowobjects.Move> parser = new csv.Parser<>(
-          new FileReader("back/data/Sample_Data.csv"), new MoveCreator(), true);
+          new FileReader("back/data/Sample_Full_1.csv"), new MoveCreator(), true);
       RandomGenerator generator = new RandomGenerator(parser.parseLines());
       Spark.get("generate", new GenerateHandler(generator));
       Spark.init();
