@@ -25,12 +25,13 @@ export default function SequenceMenu({
   }, [currentMoveIndex, moves, stopLoop]);
 
   return (
-      <div>
+      <div role="list">
         <div className="sequence-menu">
           <h2 className="sequence-menu-header">Current Sequence</h2>
           <div className="sequence-menu-moves">
             {moves.map((move, index) => (
                 <div
+                    role="listitem"
                     key={index}
                     className={`sequence-menu-move ${
                         index === currentMoveIndex ? "highlighted" : ""

@@ -7,12 +7,22 @@ import {BrowserRouter} from "react-router-dom";
 import Tutorials from "../src/Tutorials";
 import Trainer from "../src/Trainer";
 import {getMockJson} from "./mockJson";
-
+import jest from "jest-mock";
 
 /**
  * This is our testing file. Before running these tests, make sure that the correct initialJson is uncommented within the App
  * class. To run these tests, cd into the frontend and enter "npm test" into the terminal.
  */
+
+let mockResponse = getMockJson();
+
+global.fetch = jest.fn(() =>
+    Promise.resolve({
+      json: () => Promise.resolve(mockResponse).then(response => {
+        return response;
+      }),
+    }),
+) as jest.Mock<any>;
 
 /**
  * This tests that the landing page contains the correct elements when rendered
@@ -49,8 +59,20 @@ test("tutorial page renders", async () => {
  */
 test("trainer page renders", async () => {
   render(<Trainer />, {wrapper: BrowserRouter});
-  const navbar = screen.getByRole("navigation");
-  expect(navbar).ToBeInTheDocument();
+  expect(fetch).toHaveBeenCalled();
 
-  // rest of the page...
+  const navbar = screen.getAllByRole("navigation")[0];
+  expect(navbar).toBeInTheDocument();
+  expect(navbar).toContainHTML("Tutorials");
+  expect(navbar).toContainHTML("Trainer");
+
+  expect(screen.getByRole("list")).toBeInTheDocument();
+  // Default sequence is 8 moves long
+  expect(screen.getAllByRole("listitem")[7]).toBeInTheDocument();
+  expect(screen.getByRole("main")).toBeInTheDocument();
+  expect(screen.getByRole("select")).toBeInTheDocument();
+
+  const generateButton = screen.getAllByRole("button")[2];
+  expect(generateButton).toBeInTheDocument();
+  expect(generateButton).toContainHTML("Generate New Sequence");
 });

@@ -86,7 +86,7 @@ export default function Backdrop(props: Props) {
       </nav>
       <div className="sequence-dropdown-and-button">
         <label htmlFor="length-select">Select length: </label>
-        <select id="length-select" value={selectedLength} onChange={handleLengthChange}>
+        <select role="select" id="length-select" value={selectedLength} onChange={handleLengthChange}>
           <option value="4">4</option>
           <option value="5">5</option>
           <option value="6">6</option>
@@ -97,7 +97,7 @@ export default function Backdrop(props: Props) {
           <option value="11">11</option>
           <option value="12">12</option>
         </select>
-        <button id="generate-button" onClick={handleGenerateNewClick}>Generate New Sequence</button>
+        <button role="button" id="generate-button" onClick={handleGenerateNewClick}>Generate New Sequence</button>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ interface ImagesProps {
 
 export default function Images({ filePath, altText, currentMoveName }: ImagesProps) {
   return (
-    <div className="ImagesContainer">
+    <div className="ImagesContainer" role="main">
       <div className="Images">
         <img src={filePath} alt={altText} />
       </div>
