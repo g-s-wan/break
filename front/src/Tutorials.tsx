@@ -1,25 +1,36 @@
-import Images from "./components/Images";
 import TopBar from "./components/TopBar";
-import {HashRouter, Route, Routes} from "react-router-dom";
+import { useState } from 'react';
 import TutorialSection from "./components/TutorialSection";
 import { MovesList } from "../src/jsons/tutorial";
-import Dropdowns from "./components/Dropdowns";
-import {difficultyValue} from "./components/Dropdowns"; 
+import Select from 'react-select';
 
 
 
 export default function Tutorial(){
-    var sections = [];
-    for(let i = 0; i < MovesList.Moves.length; i++){
-        if(MovesList.Moves[i].Level == difficultyValue){
-            sections.push(<TutorialSection video = {MovesList.Moves[i].Link} moveName= {MovesList.Moves[i].Name} mainText= {MovesList.Moves[i].Description} 
-                altText= {MovesList.Moves[i].Name}></TutorialSection>)
-        }
-    }
+  const [difficultyValue, setDifficultyValue] = useState<{ value: string ; label: string } | null>(null);
+  
+  const difficultyOptions = [
+    { value: "1", label: "Easy" },
+    { value: "2", label: "Medium" }, 
+    { value: "3", label: "Hard" }
+  ];
+
+  var sections = [];
+  for(let i = 0; i < MovesList.Moves.length; i++){
+      if(MovesList.Moves[i].Level == difficultyValue?.value){
+          sections.push(<TutorialSection video = {MovesList.Moves[i].Link} moveName= {MovesList.Moves[i].Name} mainText= {MovesList.Moves[i].Description} 
+              altText= {MovesList.Moves[i].Name}></TutorialSection>)
+      }
+  }
   return(
       <div>
-        <Dropdowns></Dropdowns>
         <TopBar />
+        <Select
+              id="difficulty-select"
+              options={difficultyOptions}
+              value={difficultyValue}
+              onChange={value => setDifficultyValue(value)}
+            />
         <div className = "Backdrop" role="main">
           {sections}
         </div>
