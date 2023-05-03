@@ -17,8 +17,8 @@ export default function TutorialSection({video, moveName, mainText, altText} : P
                 </video>
             </div>
             <div id = "text-section">
-                <h3>Move Name: {moveName}</h3>
-                <p> Description: {mainText}</p>
+                <h3 id = "actual-text">Move Name: {moveName}</h3>
+                <p id = "actual-text"> Description: {mainText}</p>
             </div>
         </div>
     )

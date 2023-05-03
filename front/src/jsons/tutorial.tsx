@@ -70,7 +70,7 @@ export const MovesList = {
 			},
 			{
 				Name: "Corkscrew",
-				Link: "../../../src/data/Cork_(Get-Down).mp4",
+				Link: "../../../src/data/Corkscrew.mp4",
 				Level: "1",
 				Description: "A variation on the knee drop! Before dropping, cross one leg over the other, and drop while unwinding your legs from each other,"
 				+ " creating the “corkscrew” effect!"

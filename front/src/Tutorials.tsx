@@ -8,11 +8,13 @@ import Select from 'react-select';
 
 export default function Tutorial(){
   const [difficultyValue, setDifficultyValue] = useState<{ value: string ; label: string } | null>(null);
-  
+
+
   const difficultyOptions = [
     { value: "1", label: "Easy" },
     { value: "2", label: "Medium" }, 
-    { value: "3", label: "Hard" }
+    { value: "3", label: "Hard" },
+    { value: "4", label: "All" }
   ];
 
   var sections = [];
@@ -21,9 +23,14 @@ export default function Tutorial(){
           sections.push(<TutorialSection video = {MovesList.Moves[i].Link} moveName= {MovesList.Moves[i].Name} mainText= {MovesList.Moves[i].Description} 
               altText= {MovesList.Moves[i].Name}></TutorialSection>)
       }
+    
+      if(difficultyValue?.label == "All" || difficultyValue  == null){
+        sections.push(<TutorialSection video = {MovesList.Moves[i].Link} moveName= {MovesList.Moves[i].Name} mainText= {MovesList.Moves[i].Description} 
+          altText= {MovesList.Moves[i].Name}></TutorialSection>)
+      }
   }
   return(
-      <div>
+      <div className="Backdrop">
         <TopBar />
         <Select
               id="difficulty-select"
