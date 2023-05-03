@@ -13,6 +13,7 @@
   width: 100%;
   background-color: #B0C4DE;
   z-index: -1;
+  overflow-y: auto;
   
 }
 

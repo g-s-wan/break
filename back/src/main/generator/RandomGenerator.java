@@ -54,7 +54,7 @@ public class RandomGenerator {
         stackingStacker.push(this.moves.get(startIndex));
         while (!stackingStacker.isEmpty()){
             Move current = stackingStacker.pop();
-            if(visited.get(current.getId()) < 3) {
+            if(visited.get(current.getId()) < 2) {
                 res.add(current);
                 visited.put(current.getId(), visited.get(current.getId())+1);
             }else{
@@ -90,7 +90,7 @@ public class RandomGenerator {
                 if(moveIndex == -1){
                     break;
                 }
-                if(visited.get(moveIndex) < 3){
+                if(visited.get(moveIndex) < 2){
                     stackingStacker.push(this.moves.get(moveIndex));
                     break;
                 }else{
