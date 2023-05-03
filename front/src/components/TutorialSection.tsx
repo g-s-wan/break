@@ -2,17 +2,19 @@ import Backdrop from "./Backdrop"
 
 
 type Props = {
-    image: string;
+    video: string;
     moveName: string;
     mainText: string;
     altText: string;
   };
 
-export default function TutorialSection({image, moveName, mainText, altText} : Props){
+export default function TutorialSection({video, moveName, mainText, altText} : Props){
     return(
         <div id = "tutorial-section">
             <div id = "image-section"> 
-                <img className = "tutorial-images" src={image} alt= {altText}/>
+                <video className = "tutorial-images" controls >
+                    <source src = {video} type="video/mp4"/> 
+                </video>
             </div>
             <div id = "text-section">
                 <h3>Move Name: {moveName}</h3>

@@ -24,6 +24,10 @@ public class RandomGenerator {
         }
     }
 
+    public Map<String, List<Move>> getMoveCategories(){
+        return this.moveCategories;
+    }
+
     public List<Move> generate(int length){
         int startIndex = this.moveCategories.get("Toprock").get((int)(Math.random()*this.moveCategories.get("Toprock").size())).getId();
         int toprockMoves = length/4;
@@ -109,5 +113,9 @@ public class RandomGenerator {
             return -1;
         }
         return filteredMoves.get((int)(Math.random()*filteredMoves.size())).getId();
+    }
+
+    public int testGenerateOnType(String type, ArrayList<Integer> availableMoves){
+        return generateOnType(type, availableMoves);
     }
 }
