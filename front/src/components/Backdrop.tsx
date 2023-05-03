@@ -22,7 +22,7 @@ export default function Backdrop(props: Props) {
       setCurrentMoveIndex((prevIndex) =>
         prevIndex >= moves.length - 1 ? 0 : prevIndex + 1
       );
-    }, 10000);
+    }, 4000);
   
     return () => clearInterval(id);
   }, [moves]);
