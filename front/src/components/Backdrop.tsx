@@ -71,22 +71,10 @@ export default function Backdrop(props: Props) {
 
   return (
     <div>
-      <label htmlFor="length-select">Select length:</label>
-      <select id="length-select" value={selectedLength} onChange={handleLengthChange}>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-      </select>
-      <button onClick={handleGenerateNewClick}>Generate New</button>
       <nav className="Backdrop">
         <SequenceMenu
           moves={moves}
+          fetchData={fetchData}
           currentMoveIndex={currentMoveIndex}
           stopLoop={stopLoop}
         />
@@ -96,6 +84,21 @@ export default function Backdrop(props: Props) {
           currentMoveName={moves[currentMoveIndex]}
         />
       </nav>
+      <div className="sequence-dropdown-and-button">
+        <label htmlFor="length-select">Select length: </label>
+        <select id="length-select" value={selectedLength} onChange={handleLengthChange}>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        <button id="generate-button" onClick={handleGenerateNewClick}>Generate New Sequence</button>
+      </div>
     </div>
   );
 }
