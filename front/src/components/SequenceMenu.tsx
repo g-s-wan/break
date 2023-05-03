@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 
+/**
 
+Props for the SequenceMenu component.
+  @param {string[]} moves - The list of moves in the sequence.
+  @param {number} currentMoveIndex - The index of the current move in the sequence.
+  @param {Function} stopLoop - A function to stop the loop.
+  @param {Function} fetchData - A function to fetch new data.
+*/
 type Props = {
   moves: string[];
   currentMoveIndex: number;
@@ -8,6 +15,12 @@ type Props = {
   fetchData: () => void;
 };
 
+/**
+
+A component that displays the current sequence of moves.
+@param {Props} props - The props for the component.
+@returns {JSX.Element} - The rendered component.
+*/
 export default function SequenceMenu({
   moves,
   currentMoveIndex,

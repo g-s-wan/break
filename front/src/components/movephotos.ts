@@ -1,3 +1,5 @@
+//This maps the move name to the file name
+
 export default function movesData() {
     return new Map<string, string>([
         ["Indian Step", "../../../documents/photos/IndianStep.png"],
