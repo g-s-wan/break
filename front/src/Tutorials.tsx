@@ -32,12 +32,14 @@ export default function Tutorial(){
   return(
       <div className="Backdrop">
         <TopBar />
-        <Select
-              id="difficulty-select"
-              options={difficultyOptions}
-              value={difficultyValue}
-              onChange={value => setDifficultyValue(value)}
-            />
+        <div data-testid="difficulty-select">
+          <Select
+                id="difficulty-select"
+                options={difficultyOptions}
+                value={difficultyValue}
+                onChange={value => setDifficultyValue(value)}
+              />
+        </div>
         <div className = "Backdrop" role="main">
           {sections}
         </div>

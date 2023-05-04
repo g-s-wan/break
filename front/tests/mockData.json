@@ -1,6 +1,0 @@
-{"type": "FeatureCollection", "features": [{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[-1,2],[-3,4]]]]},"properties":{"name":null,"holc_id":"1","holc_grade":"A","area_description_data":{"":""}}},
-  {"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[15,20],[32,18]]]]},"properties":{"name":null,"holc_id":"1","holc_grade":"A","area_description_data":{"1":"taylor swift yassss"}}},
-  {"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[100,100],[150,150]]]]},"properties":{"name":null,"holc_id":"1","holc_grade":"A","area_description_data":{"2":"caroline and richard are killing this project"}}},
-  {"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[-20,18],[-60,-45]]]]},"properties":{"name":null,"holc_id":"1","holc_grade":"A","area_description_data":{"3":"we love maps"}}},
-  {"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[97,1],[-75,32]]]]},"properties":{"name":null,"holc_id":"1","holc_grade":"A","area_description_data":{"3":"another one about maps bc we love them"}}}
-]}

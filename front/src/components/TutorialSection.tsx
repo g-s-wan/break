@@ -10,7 +10,7 @@ type Props = {
 
 export default function TutorialSection({video, moveName, mainText, altText} : Props){
     return(
-        <div id = "tutorial-section">
+        <div id = "tutorial-section" aria-label="Tutorial Video">
             <div id = "image-section" key={moveName}>
                 <video className = "tutorial-images" controls >
                     <source key={moveName} src = {video} type="video/mp4"/>

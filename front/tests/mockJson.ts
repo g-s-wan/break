@@ -12,7 +12,8 @@ export function getMockJson(length: number): MockJson {
               { "difficulty": 1, "id": 7, "links": [ 1, 0, 17 ], "name": "Sidestep", "type": "Toprock" },
               { "difficulty": 2, "id": 20, "links": [ -1 ], "name": "Coffee Grinder (Get Down)", "type": "Go-Down" },
               { "difficulty": 1, "id": 4, "links": [ 2, 3, 4, 6, 8, 9, 10, 11, 12, 14 ], "name": "CC", "type": "Footwork" },
-              { "difficulty": 2, "id": 12, "links": [ 5 ], "name": "Chair Freeze", "type": "Freeze" } ] }
+              { "difficulty": 2, "id": 12, "links": [ 5 ], "name": "Chair Freeze", "type": "Freeze" } ]
+        }
     )
   } else {
     return (
