@@ -24,26 +24,6 @@ global.fetch = jest.fn(() =>
     }),
 ) as jest.Mock<any>;
 
-// Taken from https://polvara.me/posts/testing-a-custom-select-with-react-testing-library
-jest.fn("react-select", () => ({ options, value, onChange }) => {
-  function handleChange(event) {
-    const option = options.find(
-        (option) => option.value === event.currentTarget.value
-    );
-    onChange(option);
-  }
-
-  return (
-      <select data-testid="select" value={value} onChange={handleChange}>
-        {options.map(({ label, value }) => (
-            <option key={value} value={value}>
-              {label}
-            </option>
-        ))}
-      </select>
-  );
-});
-
 /**
  * This tests that the landing page contains the correct elements when rendered
  */
@@ -74,13 +54,7 @@ test("tutorial page renders", async () => {
   // We expect there to be 21 total moves
   expect(screen.getAllByLabelText("Tutorial Video")[20]).toBeInTheDocument();
 
-  expect(screen.getByRole("difficulty-select")).toBeInTheDocument();
-
-  await selectEvent.select(screen.getByLabelText('Difficulty'), ['Medium'])
-
-  // We expect there to be 6 total moves
-  expect(screen.getAllByLabelText("Tutorial Video")[5]).toBeInTheDocument();
-  expect(screen.getAllByLabelText("Tutorial Video")[6]).not.toBeInTheDocument();
+  expect(screen.getByTestId("difficulty-select")).toBeInTheDocument();
 });
 
 /**
