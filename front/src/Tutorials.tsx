@@ -5,7 +5,12 @@ import { MovesList } from "../src/jsons/tutorial"
 import Select from 'react-select';
 
 
-
+/**
+The Tutorial component displays a list of tutorial sections for different dance moves. It 
+uses the MovesList data to generate a list of TutorialSection components, which show the 
+video and description for each move. It also includes a Select component for filtering moves 
+by difficulty level. The Tutorials page also contains the TopBar. 
+*/
 export default function Tutorial(){
   const [difficultyValue, setDifficultyValue] = useState<{ value: string ; label: string } | null>(null);
 

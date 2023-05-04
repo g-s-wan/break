@@ -1,3 +1,4 @@
+//defined the move names, link, level, and description
 export const MovesList = {
 		Moves: [
 			{

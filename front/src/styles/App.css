@@ -1,3 +1,5 @@
+/* This contains the styling for all the different components in this program */ 
+
 .App {
   text-align: left;
   height: 100%;
@@ -5,9 +7,6 @@
 }
 
 .Backdrop {
-  /* height: 100%;
-  background-color: red; */
-
   position: absolute;
   height: 100%;
   width: 100%;
@@ -18,16 +17,6 @@
 }
 
 .TopBar {
-  /* height: 75px;
-  background-color: #6A5ACD;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 55px;
-  width: 100%;
-  justify-content: center; /* add this line */
-  /* z-index: 1; add this line */ 
-
   position: relative;
   height: 75px;
   background-color: #6A5ACD;
@@ -196,9 +185,7 @@ li {
   width: 50%;
   background-color: #e1f3f8;
   border-style: solid;
-  /* Add the following line: */
   max-width: 100%;
-  /* Remove the following line: */
   display: flex;
   justify-content: center;
 }
@@ -219,7 +206,6 @@ li {
 
 #text-section{
   width: 50%;
-  /* background-color: #879DB2; */
   border-radius: .5%;
   border-style: solid;
   border-radius: 5%;

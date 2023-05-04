@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SequenceMenu from "./SequenceMenu";
 import Images from "./Images";
-import movesData from "./movephotos";
+import movesData from "../jsons/movephotos";
 
 //The Backdrop contains all the elements unique to the Trainer page
 
