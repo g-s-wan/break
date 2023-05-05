@@ -1,4 +1,7 @@
-//defined the move names, link, level, and description
+/**
+ * This is the front end json for the tutorial page, and it defines the move name, video link, difficulty, and description. The fornt end tutorial page uses this to as its data 
+ * as it loops through this list of moves and their fields in order to push the correct videos to the user 
+*/
 export const MovesList = {
 		Moves: [
 			{

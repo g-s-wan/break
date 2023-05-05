@@ -1,4 +1,4 @@
-//This maps the move name to the file name
+//This json maps the move name to its file name in the photos folder 
 
 export default function movesData() {
     return new Map<string, string>([

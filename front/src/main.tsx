@@ -7,7 +7,7 @@ import Tutorials from "./Tutorials";
 import Trainer from "./Trainer";
 
 /**
- * This is the main class which uses react to set up the App. BrowserRouter is used to link the various
+ * This is the main class which uses react to set up the App and uses BrowserRouter to link the various
  * pages of the app.
  */
 

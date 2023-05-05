@@ -5,15 +5,19 @@ import { MovesList } from "../src/jsons/tutorial"
 import Select from 'react-select';
 
 
+
 /**
-The Tutorial component displays a list of tutorial sections for different dance moves. It 
-uses the MovesList data to generate a list of TutorialSection components, which show the 
-video and description for each move. It also includes a Select component for filtering moves 
-by difficulty level. The Tutorials page also contains the TopBar. 
-*/
+ * The Tutorial component displays a list of tutorial sections for different dance moves. It 
+ * uses the MovesList data to generate a list of TutorialSection components, which show the 
+ * video and description for each move. It also includes a Select component for filtering moves 
+ * by difficulty level. The Tutorials page also contains the TopBar. 
+ * @returns --> the html for the tutorial page 
+ */
 export default function Tutorial(){
+  //Create the use state for the difficultyvalue variable that changes with the dropdown menu 
   const [difficultyValue, setDifficultyValue] = useState<{ value: string ; label: string } | null>(null);
 
+  //The different options for the Dropdown menu and their values 
   const difficultyOptions = [
     { value: "1", label: "Easy" },
     { value: "2", label: "Medium" },
@@ -21,6 +25,7 @@ export default function Tutorial(){
     { value: "4", label: "All" }
   ];
 
+  //This is the sections array that we fill with tutorial sections in the for loop and push on to the page
   let sections = [];
   // Loop through all the moves
   for(let i = 0; i < MovesList.Moves.length; i++){
@@ -46,6 +51,7 @@ export default function Tutorial(){
                 id="difficulty-select"
                 options={difficultyOptions}
                 value={difficultyValue}
+
                 onChange={value => setDifficultyValue(value)}
               />
         </div>
