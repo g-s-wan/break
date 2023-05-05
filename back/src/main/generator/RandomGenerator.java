@@ -7,11 +7,22 @@ import java.util.*;
 public class RandomGenerator {
     private List<Move> moves;
     private Map<String, List<Move>> moveCategories;
+
+    /**
+     * Constructs a RandomGenerator object with the given list of moves.
+     *
+     * @param moves a List of Move objects that will be used to generate new sequences of moves
+     */
     public RandomGenerator(List<Move> moves){
         this.moves = moves;
         this.makeMoveCategories(moves);
     }
 
+    /**
+     * Creates a Map of move categories from the given List of moves.
+     *
+     * @param moves a List of Move objects that will be categorized by type
+     */
     private void makeMoveCategories(List<Move> moves){
         this.moveCategories = new HashMap<>();
         this.moveCategories.put("Toprock", new ArrayList<>());
@@ -24,10 +35,21 @@ public class RandomGenerator {
         }
     }
 
+    /**
+     * Returns the Map of move categories.
+     *
+     * @return a Map of String keys representing move types and List values of Move objects of that type
+     */
     public Map<String, List<Move>> getMoveCategories(){
         return this.moveCategories;
     }
 
+    /**
+     * Generates a List of random Move objects of the given length.
+     *
+     * @param length the length of the desired sequence of moves
+     * @return a List of random Move objects of the given length
+     */
     public List<Move> generate(int length){
         int startIndex = this.moveCategories.get("Toprock").get((int)(Math.random()*this.moveCategories.get("Toprock").size())).getId();
         int toprockMoves = length/4;
@@ -102,6 +124,13 @@ public class RandomGenerator {
         return res;
     }
 
+    /**
+     * Generates a random Move object of the given type from the list of available moves.
+     *
+     * @param type the type of move to generate (e.g. "Toprock", "Footwork")
+     * @param availableMoves a List of Integer move IDs that are available to generate from
+     * @return the ID of a randomly generated Move object of the given type, or -1 if none are available
+     */
     private int generateOnType(String type, ArrayList<Integer> availableMoves){
         ArrayList<Move> filteredMoves = new ArrayList<Move>();
         for(Integer i: availableMoves){
@@ -115,6 +144,13 @@ public class RandomGenerator {
         return filteredMoves.get((int)(Math.random()*filteredMoves.size())).getId();
     }
 
+    /**
+     * Helper method used for testing generateOnType method.
+     *
+     * @param type the type of move to generate (e.g. "Toprock", "Footwork")
+     * @param availableMoves a List of Integer move IDs that are available to generate from
+     * @return the ID of a randomly generated Move object of the given type, or -1 if none are available
+     */
     public int testGenerateOnType(String type, ArrayList<Integer> availableMoves){
         return generateOnType(type, availableMoves);
     }
