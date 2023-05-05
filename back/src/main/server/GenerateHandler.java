@@ -13,9 +13,9 @@ import generator.RandomGenerator;
 import csv.rowobjects.Move;
 
 /**
- * Handler class for requests to the /map endpoint
+ * Handler class for requests to the /generate endpoint
  *
- * Returns a success response if the file was loaded by the server, or an appropriate error message
+ * Returns a success response if the sequence generation was successful, or an appropriate error message
  * depending on what went wrong
  */
 public class GenerateHandler implements Route {
@@ -27,31 +27,43 @@ public class GenerateHandler implements Route {
 
 
   /**
-   * Handles requests to the server to generate sequences of breakdancing moves
+   * Handles requests to the server to generate sequences of breaking moves
    *
    * @param request  - HTTP request from the user
    * @param response - HTTP response from the server
-   * @return MapResponse - JSON response that reports whether the generation was successful
+   * @return GenerateResponse - JSON response that reports whether the generation was successful
    * @throws Exception
    */
   @Override
   public Object handle(Request request, Response response) throws Exception {
-    // String difficulty = request.queryParams("difficulty");
-    int length = Integer.parseInt(request.queryParams("length"));
-
     // Will keep track of mappings between fields and content that will be returned
     Map<String, Object> jsonMap = new LinkedHashMap<>();
+
+    String lengthStr = request.queryParams("length");
+
+    if (lengthStr == null) {
+      jsonMap.put("result", "error_bad_request");
+      jsonMap.put("message", "Please provide a desired length for the sequence.");
+
+      return new GenerateResponse(jsonMap).serialize();
+    }
+
     List<Move> moveSequence;
 
     try {
+      int length = Integer.parseInt(lengthStr);
+
+      // Return the sequence
       moveSequence = this.generator.generate(length);
 
       jsonMap.put("result", "success");
       jsonMap.put("data", moveSequence);
-
+    } catch (NumberFormatException e) {
+      jsonMap.put("result", "error_bad_request");
+      jsonMap.put("message", "Please provide an integer between 4 and 12, inclusive.");
     } catch (Exception e) {
       jsonMap.put("result", "error");
-      jsonMap.put("message", "oops");
+      jsonMap.put("message", "An unknown error occurred");
     }
 
       return new GenerateResponse(jsonMap).serialize();

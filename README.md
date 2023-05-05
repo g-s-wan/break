@@ -36,6 +36,7 @@
 
 **Tests:**
 - back/src/test contains backend tests
+  - TestGenerateHandler: integration tests for the server
 - front/src/test contains frontend tests
     - ui.test.tsx: tests that all pages render correctly and function as expected
 
