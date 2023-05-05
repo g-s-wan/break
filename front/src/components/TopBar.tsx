@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import React from "react";
 
 /**
 Renders the TopBar component that contains navigation links to other pages.

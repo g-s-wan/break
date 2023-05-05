@@ -1,4 +1,3 @@
-import Backdrop from "./Backdrop"
 
 //These are the props for the TutorialSection component
 type Props = {
