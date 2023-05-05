@@ -1,10 +1,8 @@
-package src.main.server;
+package server;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;

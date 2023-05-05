@@ -22,12 +22,15 @@ export default function Tutorial(){
   ];
 
   let sections = [];
+  // Loop through all the moves
   for(let i = 0; i < MovesList.Moves.length; i++){
+      // If the move's difficulty matches the chosen difficulty, render a TutorialSection for it
       if(MovesList.Moves[i].Level == difficultyValue?.value){
           sections.push(<TutorialSection video = {MovesList.Moves[i].Link} moveName= {MovesList.Moves[i].Name} mainText= {MovesList.Moves[i].Description}
               altText= {MovesList.Moves[i].Name}></TutorialSection>)
       }
 
+      // If the difficulty has not been chosen or is "All", render all the moves
       if(difficultyValue?.label == "All" || difficultyValue  == null){
         sections.push(<TutorialSection video = {MovesList.Moves[i].Link} moveName= {MovesList.Moves[i].Name} mainText= {MovesList.Moves[i].Description}
           altText= {MovesList.Moves[i].Name}></TutorialSection>)
@@ -37,6 +40,7 @@ export default function Tutorial(){
   return(
       <div className="Backdrop">
         <TopBar />
+        <h1 role="heading">Tutorials</h1>
         <div data-testid="difficulty-select">
           <Select
                 id="difficulty-select"

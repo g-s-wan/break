@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import TopBar from "./components/TopBar";
 import Backdrop from "./components/Backdrop";
-import SequenceMenu from "./components/SequenceMenu";
-import {HashRouter, Route, Routes} from "react-router-dom";
 
-//This defines the Trainer page, which contains the TopBar and the Backdrop
+/**
+ * This defines the Trainer page, which contains the TopBar, Backdrop, and a heading. This page is
+ * where users are able to generate and view move sequences.
+ */
 function Trainer() {
     return (
         <div>
-          <TopBar />
+          <TopBar/>
+          <h1 id="Trainer-Header" role="heading">Trainer</h1>
           <Backdrop />
         </div>
     );

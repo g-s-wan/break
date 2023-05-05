@@ -3,7 +3,7 @@ import SequenceMenu from "./SequenceMenu";
 import Images from "./Images";
 import movesData from "../jsons/movephotos";
 
-//The Backdrop contains all the elements unique to the Trainer page
+// The Backdrop contains all the elements unique to the Trainer page
 
 // Define a type for the move object
 type Move = {
@@ -67,6 +67,7 @@ export default function Backdrop(props: Props) {
     }
   }
 
+  // Display a move sequence as soon as the page renders
   useEffect(() => {
     fetchData();
   }, []);

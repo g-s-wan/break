@@ -4,12 +4,9 @@ import static spark.Spark.after;
 
 import csv.rowcreators.MoveCreator;
 import generator.RandomGenerator;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import spark.Spark;
-
-import src.main.server.GenerateHandler;
 
 /** the Main class of our project. this is where execution begins. */
 public final class Server {

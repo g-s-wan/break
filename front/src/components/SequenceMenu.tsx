@@ -27,7 +27,6 @@ export default function SequenceMenu({
   stopLoop,
     fetchData
 }: Props) {
-  const [selectedMoveIndex, setSelectedMoveIndex] = useState(currentMoveIndex);
 
   useEffect(() => {
     // Check if the current move index is the last move

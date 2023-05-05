@@ -1,4 +1,4 @@
-//The Images component represents the image on the Trainer screen
+// The Images component represents the image on the Trainer screen
 
 // Define the properties of the Images component
 interface ImagesProps {

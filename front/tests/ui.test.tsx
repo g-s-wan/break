@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import React from "react";
-import {fireEvent, getByTestId, render, screen} from "@testing-library/react";
+import {cleanup, fireEvent, render, screen} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../src/App";
 import {BrowserRouter} from "react-router-dom";
@@ -8,13 +8,14 @@ import Tutorials from "../src/Tutorials";
 import Trainer from "../src/Trainer";
 import {getMockJson} from "./mockJson";
 import jest from "jest-mock";
-import selectEvent from 'react-select-event'
 
 /**
- * This is our testing file. Before running these tests, make sure that the correct initialJson is uncommented within the App
- * class. To run these tests, cd into the frontend and enter "npm test" into the terminal.
+ * This is our testing file. To run these tests, cd into the frontend and enter "npm test" into the terminal.
  */
 
+afterEach(cleanup);
+
+// Mocking fetch
 let mockResponse = getMockJson(8);
 global.fetch = jest.fn(() =>
     Promise.resolve({
@@ -49,20 +50,23 @@ test("tutorial page renders", async () => {
   const navbar = screen.getByRole("navigation");
   expect(navbar).toBeInTheDocument();
 
+  const heading = screen.getAllByRole("heading")[0]
+  expect(heading).toBeInTheDocument();
+  expect(heading).toContainHTML("Tutorials");
   expect(screen.getByRole("main")).toBeInTheDocument();
-
-  // We expect there to be 21 total moves
-  expect(screen.getAllByLabelText("Tutorial Video")[20]).toBeInTheDocument();
-
   expect(screen.getByTestId("difficulty-select")).toBeInTheDocument();
+
+  // We expect there to be 21 total moves by default
+  expect(screen.getAllByLabelText("Tutorial Video")[20]).toBeInTheDocument();
 });
 
 /**
- * This tests that the trainer page updates when the user applies the easy filter
+ * This tests that the tutorials page updates when the user applies the easy filter
  */
 test("easy filter works", async () => {
   render(<Tutorials/>, {wrapper: BrowserRouter});
 
+  // Select the easy filter
   const dropdown = screen.getByText('Select...');
 
   fireEvent.keyDown(dropdown, {
@@ -78,11 +82,12 @@ test("easy filter works", async () => {
 });
 
 /**
- * This tests that the trainer page updates when the user applies the medium filter
+ * This tests that the tutorials page updates when the user applies the medium filter
  */
 test("medium filter works", async () => {
   render(<Tutorials/>, {wrapper: BrowserRouter});
 
+  // Select the medium filter
   const dropdown = screen.getByText('Select...');
 
   fireEvent.keyDown(dropdown, {
@@ -98,11 +103,12 @@ test("medium filter works", async () => {
 });
 
 /**
- * This tests that the trainer page updates when the user applies the hard filter
+ * This tests that the tutorials page updates when the user applies the hard filter
  */
 test("hard filter works", async () => {
   render(<Tutorials/>, {wrapper: BrowserRouter});
 
+  // Select the hard filter
   const dropdown = screen.getByText('Select...');
 
   fireEvent.keyDown(dropdown, {
@@ -118,14 +124,14 @@ test("hard filter works", async () => {
 });
 
 /**
- * This tests that the trainer page updates when the user applies multiple filters in succession
+ * This tests that the tutorials page updates when the user applies multiple filters in succession
  */
 test("successive filtering works", async () => {
   render(<Tutorials/>, {wrapper: BrowserRouter});
 
+  // Apply Easy filter
   let dropdown = screen.getByText('Select...');
 
-  // Apply Easy filter
   fireEvent.keyDown(dropdown, {
     key: 'ArrowDown',
     code: 40
@@ -149,6 +155,7 @@ test("successive filtering works", async () => {
   expect(screen.getAllByLabelText("Tutorial Video")[20]).toBeInTheDocument();
   expect(screen.getAllByLabelText("Tutorial Video")[21]).toBeUndefined();
 
+  // Apply Hard filter
   dropdown = screen.getByText("All");
   fireEvent.click(dropdown);
   fireEvent.keyDown(dropdown, {
@@ -174,12 +181,6 @@ test("trainer page renders", async () => {
   expect(navbar).toContainHTML("Tutorials");
   expect(navbar).toContainHTML("Trainer");
 
-  // Initial/default call to first populate the page
-
-  // expect(screen.getByRole("list")).toBeInTheDocument();
-  // // Default sequence is 8 moves long
-  // expect(screen.getAllByRole("listitem")[7]).toBeInTheDocument();
-
   expect(screen.getByRole("main")).toBeInTheDocument();
 
   const dropdown = screen.getByRole("select");
@@ -189,11 +190,12 @@ test("trainer page renders", async () => {
   expect(generateButton).toBeInTheDocument();
   expect(generateButton).toContainHTML("Generate New Sequence");
 
+  // Move sequence list
   expect(screen.getByRole("list")).toBeInTheDocument();
 });
 
 /**
- * This tests that the Generate button works as expected
+ * This tests that the Generate button on the trainer page works as expected
  */
 test("generating new sequences works", async () => {
   render(<Trainer />, {wrapper: BrowserRouter});

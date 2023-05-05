@@ -3,6 +3,10 @@ export interface MockJson {
   data: any;
 }
 
+/**
+ * This file mocks JSON responses from the server. One response is for a 4-move sequence and one is for
+ * an 8-move sequence.
+ */
 export function getMockJson(length: number): MockJson {
   if (length == 4) {
     return (

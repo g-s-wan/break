@@ -2,8 +2,8 @@ import "./styles/App.css";
 import React from "react";
 import {Link} from "react-router-dom";
 
-//This class defines the landing page, which links to the other pages in the program, the
-//Tutorial page and the Trainer page. 
+// This class defines the landing page, which links to the other pages in the program, the
+// Tutorial page and the Trainer page.
 
 function Landing() {
   return (
