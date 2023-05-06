@@ -8,6 +8,9 @@
 **Project structure:**
 - Broadly, the project is split into backend code (in the back folder) and frontend code (in the front folder).
     - back-end:
+      - csv: contains the functions with which to parse the information given in a CSV database.
+      - generator: contains the methods that allow for the generation of a realistic breakdancing set based off of the information passed to it by the csv parser.
+      - server: contains the functionality to establish a server and send information to it, which can then be pulled by the frontend. It also listens for a generate endpoint which calls the generator method. 
     - front-end:
       - documents: contains photos used by the Trainer page
       - src:
@@ -23,7 +26,9 @@
 
 **Design choices:**
 - On the backend, we define Move, a custom object. Each Move object delineates the move's id, name, type, difficulty, and links (to other moves). See back/src/main/csv/rowobjects/Move.java for more details.
-- MORE BACKEND DETAILS?
+- The backend is primarily for the RandomGenerator class, which generates a random realistic breakdancing set of set length based off of the moves in the database. It uses a standard DFS graph generation algorithm based off of an adjacencylist representing the links between transitionable moves as a base. Then a few modifications are made to make the generation more realistic:
+  - The visited "array" is changed to a visited Map, so we can repeat moves a set amount of times before they are removed from the pool of allowed moves. 
+  - A map of all of the types of moves to all of the moves of that type is made. The algorithm generates based off of "sections" to simulate an actual breakdancing set - some toprock, a get-down, some footwork, possibly a powermove, and ending on a freeze. During each of these sections, we allow only for the generation of moves of that type. 
 - Our application contains three pages: Landing, Tutorials, and Trainer. 
   - Landing: When launching the app, users are taken to the Landing page, where they can navigate to one of the other two pages.
   - Tutorials: Users can view short videos and descriptions of each move.
