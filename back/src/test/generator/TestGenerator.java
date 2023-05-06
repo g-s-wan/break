@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestGenerator {
 
@@ -52,5 +53,13 @@ public class TestGenerator {
         assertEquals(generator.testGenerateOnType("Freeze", moveTypes), 5);
         assertEquals(generator.testGenerateOnType("Power", moveTypes), 6);
         assertEquals(generator.testGenerateOnType("Go-Down", moveTypes), 7);
+    }
+    @Test
+    public void testGenerateOnTypeError() throws IOException, FactoryFailureException {
+        Parser<Move> parser = new Parser<>(new FileReader("data/Sample_Data.csv"),new MoveCreator(), true);
+        RandomGenerator generator = new RandomGenerator(parser.parseLines());
+        ArrayList<Integer> moveTypes = new ArrayList<Integer>(Arrays.asList(0, 2, 5, 6));
+        assertEquals(generator.testGenerateOnType("Go-Down", moveTypes), -1);
+        assertEquals(generator.testGenerateOnType("Nonsense", moveTypes), -1);
     }
 }
