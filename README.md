@@ -41,13 +41,14 @@
 
 **Tests:**
 - back/src/test contains backend tests
-  - TestGenerateHandler: integration tests for the server
+    - TestGenerateHandler: integration tests for the server
+    - generator/TestGenerator: unit tests for the generator
 - front/src/test contains frontend tests
     - ui.test.tsx: tests that all pages render correctly and function as expected
 
 **How to:**
 - Run frontend tests: Run `npm test` in the `front` directory
-- Run backend tests:
+- Run backend tests: In your IDE, right-click on which test file you'd like to run and press "Run"
 - Build and run the program:
     - Run the main() method in back/src/main/server/Server.java    
     - Navigate to the front directory.
